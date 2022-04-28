@@ -19,15 +19,17 @@ function createGrid (gridSize){
          div.classList.add('grid-item');
 
          // defines the widht for each grid item
-         // 100% / gridSize
-         let gridItemWidth = 100 / gridSize;
-         div.style.cssText = "min-width:" + gridItemWidth + "%;";
+         let gridItemSize = Math.floor(window.innerWidth / gridSize);
+         console.log(gridItemSize);
 
-         // renders the HTML inside div
+         div.style.cssText = "width:" + gridItemSize + "px; height:" + gridItemSize +"px;";
+
+         // renders HTML inside div
          //div.innerHTML = i;                
          
          // append the div to mainContainer
          gridContainer.appendChild(div);
+     
 
          // Set up a “hover” effect so that the grid divs change color 
          // when your mouse passes over them, leaving a (pixelated) trail through 
