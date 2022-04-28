@@ -18,14 +18,14 @@ function createGrid (gridSize){
          div.setAttribute('id', 'gi' + i );
          div.classList.add('grid-item');
 
-         // defines the widht for each grid item
-         let gridItemSize = Math.floor(window.innerWidth / gridSize);
-         console.log(gridItemSize);
+         // defines the widht and height for each grid item
+         let gridItemHeight = Math.round((window.innerWidth) / gridSize);
+         let gridItemWith = 100/gridSize;
 
-         div.style.cssText = "width:" + gridItemSize + "px; height:" + gridItemSize +"px;";
+         div.style.cssText = "width:" + gridItemWith + "%; height:" + gridItemHeight +"px;";
 
          // renders HTML inside div
-         //div.innerHTML = i;                
+         div.innerHTML = i;                
          
          // append the div to mainContainer
          gridContainer.appendChild(div);
@@ -50,7 +50,7 @@ function createGrid (gridSize){
 
 
 // Create a webpage with a 16x16 grid of square divs.
-createGrid(10);
+createGrid(16);
 
 // Add a button to the top of the screen that will send the user a popup 
 // asking for the number of squares per side for the new grid. 
