@@ -1,3 +1,12 @@
+.btn-container {
+    text-align: center;
+    margin: 20px 0;
+}
+button { 
+    font-size:20px;
+    padding: 10px 40px;
+}
+
 #grid-container {
     display: flex;
     flex-wrap: wrap;
@@ -5,5 +14,7 @@
 
 .grid-item { 
     border: 1px solid #000;
+    text-align: center;
     box-sizing: border-box;
 }
+

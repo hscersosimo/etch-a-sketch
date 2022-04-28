@@ -1,31 +1,75 @@
 
+function createGrid (gridSize){
+
+   const gridContainer = document.querySelector('#grid-container');
+      
+      // defines the total amount of grid items
+      let gridItems = gridSize * gridSize;
+
+      for(let i = 1; i <= gridItems; i++){ 
+         
+         // creates a new div referenced in the variable 'div'
+         const div = document.createElement('div');
+         
+         // set an ID and class for each div
+         div.setAttribute('id', 'gi' + i );
+         div.classList.add('grid-item');
+
+         // defines the widht for each grid item
+         // 100% / gridSize
+         div.style.cssText = "width: 6.25%;";
+
+         // renders the HTML inside div
+         div.innerHTML = 'Div ' + i;                
+         
+         // append the div to mainContainer
+         gridContainer.appendChild(div);
+
+         // Set up a “hover” effect so that the grid divs change color 
+         // when your mouse passes over them, leaving a (pixelated) trail through 
+         // your grid like a pen would.
+         function changeBackground(){
+            div.style.backgroundColor = "blue";
+         };
+         function restoreBackground(){
+            div.style.backgroundColor = "white";
+         };
+         div.addEventListener('mouseover', function() {
+            changeBackground();
+            setTimeout(restoreBackground, 200);
+         });
+
+      }
+   }
+
+
 // Create a webpage with a 16x16 grid of square divs.
-// Create the divs using JavaScript. Don’t try making them by hand with copy and pasting in your HTML file!
-// It’s best to put your grid squares inside another “container” div (which can go directly in your HTML).
-// There are several different ways to make the divs appear as a grid (versus just one on each line). Feel free to use any or play with each of them:
-// float/clear
-// inline-block
-// flexbox
-// CSS Grid
+createGrid(16);
 
-const gridContainer = document.querySelector('#grid-container');
+// Add a button to the top of the screen that will send the user a popup 
+// asking for the number of squares per side for the new grid. 
+// Once entered, the existing grid should be removed and a new grid should be generated
+// in the same total space as before (e.g. 960px wide) 
+// so that you’ve got a new sketch pad. 
+// Tip: Set the limit for the user input to a maximum of 100. 
+// A larger number of squares results in more computer resources being used, 
+// potentially causing delays, freezing, or crashing that we want to prevent.
 
-for(let i = 1; i <= 256; i++){ 
-   
-   // creates a new div referenced in the variable 'div'
-   const div = document.createElement('div');
-   
-   // set an ID and class for each div
-   div.setAttribute('id', 'gi' + i );
-   div.classList.add('grid-item');
 
-      // adds several style rules
-   div.style.cssText = "width: 6.25%;";
+const gridSizeBtn = document.querySelector('#grid-size-btn');
+gridSizeBtn.addEventListener('click', function() {
 
-   // renders the HTML inside div
-   div.innerHTML = 'Div ' + i;                
-   
-   // append the div to mainContainer
-   gridContainer.appendChild(div);
+   let gridSize = prompt('Insert new grid size');
+   while (gridSize > 100) {
+      alert('Maximum size is 100. Please try again.');
+      gridSize = prompt('Insert new grid size');
+   }
 
-}
+   console.log(gridSize);
+
+});
+
+
+
+
+
