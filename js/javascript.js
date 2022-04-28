@@ -3,6 +3,9 @@ function createGrid (gridSize){
 
    const gridContainer = document.querySelector('#grid-container');
       
+      // clear any pre-existing content
+      gridContainer.innerHTML = "";
+
       // defines the total amount of grid items
       let gridItems = gridSize * gridSize;
 
@@ -17,10 +20,11 @@ function createGrid (gridSize){
 
          // defines the widht for each grid item
          // 100% / gridSize
-         div.style.cssText = "width: 6.25%;";
+         let gridItemWidth = 100 / gridSize;
+         div.style.cssText = "min-width:" + gridItemWidth + "%;";
 
          // renders the HTML inside div
-         div.innerHTML = 'Div ' + i;                
+         //div.innerHTML = i;                
          
          // append the div to mainContainer
          gridContainer.appendChild(div);
@@ -44,7 +48,7 @@ function createGrid (gridSize){
 
 
 // Create a webpage with a 16x16 grid of square divs.
-createGrid(16);
+createGrid(10);
 
 // Add a button to the top of the screen that will send the user a popup 
 // asking for the number of squares per side for the new grid. 
@@ -55,7 +59,6 @@ createGrid(16);
 // A larger number of squares results in more computer resources being used, 
 // potentially causing delays, freezing, or crashing that we want to prevent.
 
-
 const gridSizeBtn = document.querySelector('#grid-size-btn');
 gridSizeBtn.addEventListener('click', function() {
 
@@ -65,7 +68,7 @@ gridSizeBtn.addEventListener('click', function() {
       gridSize = prompt('Insert new grid size');
    }
 
-   console.log(gridSize);
+   createGrid(gridSize);
 
 });
 
